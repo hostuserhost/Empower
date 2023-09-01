@@ -19,6 +19,7 @@ dependencies:
   flutter_screenutil: ^5.9.0
   auto_size_text: ^3.0.0
   alarm: ^1.2.2
+  animated_theme_switcher: ^2.0.8
 
 dev_dependencies:
   flutter_test:

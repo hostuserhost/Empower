@@ -1,4 +1,5 @@
 import 'package:alarm/alarm.dart';
+import 'package:animated_theme_switcher/animated_theme_switcher.dart';
 import 'package:dynamic_color/dynamic_color.dart';
 import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -37,21 +38,23 @@ class _InitappState extends State<Initapp> {
         builder: (_, child) {
           return DynamicColorBuilder(
               builder: (ColorScheme? lightDynamic, ColorScheme? darkDynamic) {
-            return MaterialApp(
-              theme: ThemeData(
-                colorScheme: lightDynamic,
-                useMaterial3: true,
-              ),
-              darkTheme: ThemeData(
-                colorScheme: darkDynamic,
-                useMaterial3: true,
-              ),
-              themeMode: ThemeMode.system,
-              localizationsDelegates: context.localizationDelegates,
-              supportedLocales: context.supportedLocales,
-              locale: context.locale,
-              home: const Home(),
-            );
+            return ThemeProvider(
+                initTheme: ThemeData.dark(),
+                builder: (context, myTheme) {
+                  return MaterialApp(
+                    debugShowCheckedModeBanner: false,
+                    theme: myTheme,
+                    darkTheme: ThemeData(
+                      colorScheme: darkDynamic,
+                      useMaterial3: true,
+                    ),
+                    themeMode: ThemeMode.system,
+                    localizationsDelegates: context.localizationDelegates,
+                    supportedLocales: context.supportedLocales,
+                    locale: context.locale,
+                    home: const Home(),
+                  );
+                });
           });
         });
   }
