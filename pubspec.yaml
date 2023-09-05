@@ -20,6 +20,11 @@ dependencies:
   auto_size_text: ^3.0.0
   alarm: ^1.2.2
   animated_theme_switcher: ^2.0.8
+  font_awesome_flutter: ^10.5.0
+
+dependency_overrides:
+  font_awesome_flutter:
+    path: font_awesome_flutter
 
 dev_dependencies:
   flutter_test:
