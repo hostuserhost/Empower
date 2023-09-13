@@ -4,6 +4,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:motivation_alarm/main.dart';
 import 'package:motivation_alarm/themes.dart';
 
@@ -23,7 +24,9 @@ class Disablealarm extends StatelessWidget {
           ),
           Text(
             "already",
-            style: TextStyle(fontSize: 30.sp, fontWeight: FontWeight.bold),
+            style: GoogleFonts.getFont('Montserrat',
+                textStyle:
+                    TextStyle(fontSize: 30.sp, fontWeight: FontWeight.bold)),
           ).tr(),
           const SizedBox(
             height: 56,
@@ -32,15 +35,18 @@ class Disablealarm extends StatelessWidget {
             height: 200.h,
             child: AutoSizeText(
               TimeOfDay.now().format(context),
-              style: TextStyle(fontSize: 150.sp, color: primcolor),
+              style: GoogleFonts.getFont('Montserrat',
+                  textStyle: TextStyle(
+                      fontSize: 150.sp,
+                      color: primcolor,
+                      fontWeight: FontWeight.bold)),
             ),
-          ),
-          SizedBox(
-            height: 41.h,
           ),
           AutoSizeText(
             "nowork".tr(),
-            style: TextStyle(fontSize: 30.sp),
+            style: GoogleFonts.getFont('Montserrat',
+                textStyle:
+                    TextStyle(fontSize: 30.sp, fontWeight: FontWeight.w400)),
             maxLines: 1,
           ),
           SizedBox(height: 50.h),
@@ -76,16 +82,20 @@ class Disablealarm extends StatelessWidget {
               children: [
                 SizedBox(
                     width: 100.w,
-                    child: const Text(
+                    child: Text(
                       'golosetime',
-                      style: TextStyle(fontSize: 20),
+                      style: GoogleFonts.getFont('Montserrat',
+                          textStyle: TextStyle(
+                              fontSize: 20.sp, fontWeight: FontWeight.bold)),
                     ).tr()),
                 const Spacer(),
                 SizedBox(
                     width: 100.w,
-                    child: const Text(
+                    child: Text(
                       'startnewday',
-                      style: TextStyle(fontSize: 20),
+                      style: GoogleFonts.getFont('Montserrat',
+                          textStyle: TextStyle(
+                              fontSize: 20.sp, fontWeight: FontWeight.bold)),
                     ).tr())
               ],
             ),

@@ -5,9 +5,42 @@ import 'package:dio/dio.dart';
 import 'package:html/parser.dart' show parse;
 import 'package:flutter/material.dart';
 
+class Valuetmodel extends ChangeNotifier {
+  bool _valuet = false;
+
+  bool get valuet => _valuet;
+
+  void startalarm(bool valut) {
+    _valuet = valut;
+    notifyListeners();
+  }
+}
+
+class Valuetmodel1 extends ChangeNotifier {
+  bool _valuet1 = false;
+
+  bool get valuet1 => _valuet1;
+
+  void editchalange(bool valut) {
+    _valuet1 = valut;
+    notifyListeners();
+  }
+}
+
+class Valuetmodel2 extends ChangeNotifier {
+  bool _valuet2 = false;
+
+  bool get valuet2 => _valuet2;
+
+  void editchalange2(bool valut) {
+    _valuet2 = valut;
+    notifyListeners();
+  }
+}
+
 class TimeModel extends ChangeNotifier {
   TimeOfDay _time = TimeOfDay.now();
-  bool _valuet = false;
+
   AlarmSettings _alarm = AlarmSettings(
     id: 0,
     dateTime: DateTime.now(),
@@ -21,16 +54,12 @@ class TimeModel extends ChangeNotifier {
     enableNotificationOnKill: false,
   );
 
-  bool get valuet => _valuet;
   AlarmSettings get ala => _alarm;
+
   TimeOfDay get time => _time;
 
-  void editalarm(AlarmSettings alaedit){
+  void editalarm(AlarmSettings alaedit) {
     _alarm = alaedit;
-    notifyListeners();
-  }
-  void startalarm(bool valut) {
-    _valuet = valut;
     notifyListeners();
   }
 

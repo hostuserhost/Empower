@@ -1,10 +1,21 @@
 {
   "whilsleep": "Others are sleeping, you are working",
-  "daychalange": "Challenge of the day:",
+  "daychalange": "Day challenge:",
   "newhabit": "New habit",
   "powered": "Powered by successful people",
   "already": "ALREADY:",
   "nowork": "And you haven't done anything yet",
   "golosetime": "Keep Wasting Time",
-  "startnewday": "Start new day"
+  "startnewday": "Start new day",
+  "0daych": "Be happy",
+  "1daych": "Drink water",
+  "2daych": "Run 5 km",
+  "3daych": "Read book",
+  "4daych": "Meditation",
+  "5daych": "Don't eat meat",
+  "6daych": "Talk with stranger",
+  "7daych": "Push-ups 100",
+  "8daych": "Don't eat sweets",
+  "9daych": "Don't drink",
+  "10daych": "Don't listen music"
 }

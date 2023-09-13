@@ -20,6 +20,8 @@ dependencies:
   animated_theme_switcher: ^2.0.8
   font_awesome_flutter: ^10.5.0
   http: ^1.1.0
+  google_fonts: ^5.1.0
+  shared_preferences: ^2.2.1
 
 dependency_overrides:
   font_awesome_flutter:

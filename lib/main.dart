@@ -18,13 +18,10 @@ void main1(bool onalarm) async {
   await EasyLocalization
       .ensureInitialized(); // Инициалищирую плагин Easy localization
   await Alarm.init(); // Инициализирую плагин будильника
-  runApp(// запускает приложение
-      ChangeNotifierProvider(
-    // смотрит за изменениями нужен провайдеру
-    create: (context) => TimeModel(),
-    child:
-        // Локализация
-        EasyLocalization(
+  runApp(
+    // запускает приложение
+
+    EasyLocalization(
       supportedLocales: const [Locale('en', 'US'), Locale('ru', 'RU')],
       path: 'assets/translations',
       fallbackLocale: const Locale('en', 'US'),
@@ -32,7 +29,7 @@ void main1(bool onalarm) async {
         onalarmi: onalarm,
       ),
     ),
-  ));
+  );
 }
 
 class Initapp extends StatefulWidget {
@@ -49,8 +46,11 @@ class _InitappState extends State<Initapp> {
   @override
   Widget build(BuildContext context) {
     var initheme = MediaQuery.of(context).platformBrightness == Brightness.dark
-        ? ThemeData.dark(useMaterial3: true)
-        : ThemeData.light(useMaterial3: true);
+        ? ThemeData.dark(useMaterial3: true).copyWith(
+            scaffoldBackgroundColor: Colors.black,
+          )
+        : ThemeData.light(useMaterial3: true).copyWith(
+            scaffoldBackgroundColor: const Color.fromRGBO(217, 217, 217, 1));
     return ScreenUtilInit(
         designSize: const Size(428, 926),
         minTextAdapt: true,
@@ -59,15 +59,26 @@ class _InitappState extends State<Initapp> {
           return ThemeProvider(
               initTheme: initheme,
               builder: (context, myTheme) {
-                return MaterialApp(
-                    debugShowCheckedModeBanner: false,
-                    theme: myTheme,
-                    localizationsDelegates: context.localizationDelegates,
-                    supportedLocales: context.supportedLocales,
-                    locale: context.locale,
-                    home: widget.onalarmi == true
-                        ? const Disablealarm()
-                        : const Home());
+                return MultiProvider(
+                    providers: [
+                      ChangeNotifierProvider<TimeModel>(
+                          create: (_) => TimeModel()),
+                      ChangeNotifierProvider<Valuetmodel>(
+                          create: (_) => Valuetmodel()),
+                      ChangeNotifierProvider<Valuetmodel1>(
+                          create: (_) => Valuetmodel1()),
+                      ChangeNotifierProvider<Valuetmodel2>(
+                          create: (_) => Valuetmodel2()),
+                    ],
+                    child: MaterialApp(
+                        debugShowCheckedModeBanner: false,
+                        theme: myTheme,
+                        localizationsDelegates: context.localizationDelegates,
+                        supportedLocales: context.supportedLocales,
+                        locale: context.locale,
+                        home: widget.onalarmi == true
+                            ? const Disablealarm()
+                            : const Home()));
               });
         });
   }
