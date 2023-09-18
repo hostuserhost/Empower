@@ -18,6 +18,7 @@ void main1(bool onalarm) async {
   await EasyLocalization
       .ensureInitialized(); // Инициалищирую плагин Easy localization
   await Alarm.init(); // Инициализирую плагин будильника
+  initPrefs(); // Инициализирую загрузку из Sharedpreferences
   runApp(
     // запускает приложение
 
@@ -50,7 +51,8 @@ class _InitappState extends State<Initapp> {
             scaffoldBackgroundColor: Colors.black,
           )
         : ThemeData.light(useMaterial3: true).copyWith(
-            scaffoldBackgroundColor: const Color.fromRGBO(217, 217, 217, 1));
+            scaffoldBackgroundColor:
+                const Color.fromRGBO(217, 217, 217, 1)); // Тема главная
     return ScreenUtilInit(
         designSize: const Size(428, 926),
         minTextAdapt: true,
@@ -63,8 +65,6 @@ class _InitappState extends State<Initapp> {
                     providers: [
                       ChangeNotifierProvider<TimeModel>(
                           create: (_) => TimeModel()),
-                      ChangeNotifierProvider<Valuetmodel>(
-                          create: (_) => Valuetmodel()),
                       ChangeNotifierProvider<Valuetmodel1>(
                           create: (_) => Valuetmodel1()),
                       ChangeNotifierProvider<Valuetmodel2>(

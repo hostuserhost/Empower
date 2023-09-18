@@ -24,19 +24,27 @@ class Home extends StatelessWidget {
               alignment: const Alignment(0.95, -1.01),
               child: ThemeSwitcher.withTheme(
                 builder: (_, switcher, theme) {
-                  return IconButton(
-                    onPressed: () {
-                      switcher.changeTheme(
-                          theme: theme.brightness == Brightness.light
-                              ? ThemeData.dark(useMaterial3: true).copyWith(
-                                  scaffoldBackgroundColor: Colors.black,
-                                )
-                              : ThemeData.light(useMaterial3: true).copyWith(
-                                  scaffoldBackgroundColor:
-                                      const Color.fromRGBO(217, 217, 217, 1)));
-                    },
-                    icon: const Icon(Icons.brightness_6, size: 30),
-                  );
+                  return SizedBox(
+                      width: 55.w,
+                      height: 55.h,
+                      child: FittedBox(
+                        child: IconButton(
+                          onPressed: () {
+                            switcher.changeTheme(
+                                theme: theme.brightness == Brightness.light
+                                    ? ThemeData.dark(useMaterial3: true)
+                                        .copyWith(
+                                        scaffoldBackgroundColor: Colors.black,
+                                      )
+                                    : ThemeData.light(useMaterial3: true)
+                                        .copyWith(
+                                            scaffoldBackgroundColor:
+                                                const Color.fromRGBO(
+                                                    217, 217, 217, 1)));
+                          },
+                          icon: const Icon(Icons.brightness_6, size: 30),
+                        ),
+                      ));
                 },
               ),
             ),
@@ -95,10 +103,10 @@ class Home extends StatelessWidget {
                 ),
                 lnec(context),
                 SizedBox(
-                  height: 286.h,
+                  height: 230.h,
                 ),
                 Padding(
-                  padding: const EdgeInsets.all(41).w,
+                  padding: const EdgeInsets.all(41).r,
                   child: Row(
                     children: [
                       onchalange(
@@ -113,7 +121,17 @@ class Home extends StatelessWidget {
                                     },
                                   ))),
                       const Spacer(),
-                      onchalange("newhabit", "sef", context, const Text("data"))
+                      onchalange(
+                          "newhabit",
+                          "${Random().nextInt(10)}hab".tr(),
+                          context,
+                          Consumer<Valuetmodel2>(
+                              builder: (_, valcar, __) => Switch(
+                                    value: valcar.valuet2,
+                                    onChanged: (bool value) {
+                                      valcar.editchalange2(value);
+                                    },
+                                  ))),
                     ],
                   ),
                 ),

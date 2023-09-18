@@ -4,41 +4,54 @@ import 'package:alarm/alarm.dart';
 import 'package:dio/dio.dart';
 import 'package:html/parser.dart' show parse;
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-class Valuetmodel extends ChangeNotifier {
-  bool _valuet = false;
+savepre(String key, bool ela) async {
+  SharedPreferences pref = await SharedPreferences.getInstance();
+  pref.setBool(key, ela);
+}
 
-  bool get valuet => _valuet;
+var pref;
 
-  void startalarm(bool valut) {
-    _valuet = valut;
-    notifyListeners();
-  }
+initPrefs() async {
+  pref ??= await SharedPreferences.getInstance();
 }
 
 class Valuetmodel1 extends ChangeNotifier {
-  bool _valuet1 = false;
+  bool _valuet1 = pref.getBool("valmod1") ?? false;
 
   bool get valuet1 => _valuet1;
 
   void editchalange(bool valut) {
     _valuet1 = valut;
+    savepre("valmod1", valut);
     notifyListeners();
   }
 }
 
 class Valuetmodel2 extends ChangeNotifier {
-  bool _valuet2 = false;
+  bool _valuet2 = pref.getBool("valmod2") ?? false;
 
   bool get valuet2 => _valuet2;
 
   void editchalange2(bool valut) {
     _valuet2 = valut;
+    savepre("valmod2", valut);
     notifyListeners();
   }
 }
 
 class TimeModel extends ChangeNotifier {
+  bool _valuet = pref.getBool("valmod") ?? false;
+
+  bool get valuet => _valuet;
+
+  void startalarm(bool valut) {
+    _valuet = valut;
+    savepre("valmod", valut);
+    notifyListeners();
+  }
+
   TimeOfDay _time = TimeOfDay.now();
 
   AlarmSettings _alarm = AlarmSettings(
