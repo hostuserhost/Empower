@@ -3,8 +3,11 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:motivation_alarm/logic/base_logic.dart';
+import 'package:provider/provider.dart';
+import 'package:vector_graphics/vector_graphics.dart';
 import 'package:motivation_alarm/main.dart';
 import 'package:motivation_alarm/themes.dart';
 
@@ -34,6 +37,7 @@ class Disablealarm extends StatelessWidget {
           SizedBox(
             height: 200.h,
             child: AutoSizeText(
+              maxLines: 1,
               TimeOfDay.now().format(context),
               style: GoogleFonts.getFont('Montserrat',
                   textStyle: TextStyle(
@@ -54,25 +58,27 @@ class Disablealarm extends StatelessWidget {
             padding: const EdgeInsets.only(right: 20, left: 20).w,
             child: Row(
               children: [
-                IconButton(
-                    onPressed: () async {
-                      await Alarm.stop(0);
-                      main();
-                    },
-                    icon: const FaIcon(
-                      FontAwesomeIcons.circleXmark,
-                      size: 80,
-                    )),
+                GestureDetector(
+                  onTap: () async {
+                    await Alarm.stop(0);
+                    Provider.of<TimeModel>(context, listen: false)
+                        .startalarm(false);
+                    main();
+                  },
+                  child: const SvgPicture(
+                      AssetBytesLoader("assets/icon/disable.svg.vec")),
+                ),
                 const Spacer(),
-                IconButton(
-                    onPressed: () async {
-                      await Alarm.stop(0);
-                      main();
-                    },
-                    icon: const FaIcon(
-                      FontAwesomeIcons.circleCheck,
-                      size: 80,
-                    )),
+                GestureDetector(
+                  onTap: () async {
+                    await Alarm.stop(0);
+                    Provider.of<TimeModel>(context, listen: false)
+                        .startalarm(false);
+                    main();
+                  },
+                  child: const SvgPicture(
+                      AssetBytesLoader("assets/icon/enable.svg.vec")),
+                ),
               ],
             ),
           ),

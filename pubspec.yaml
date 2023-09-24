@@ -21,10 +21,7 @@ dependencies:
   html: any
   google_fonts: ^5.1.0
   shared_preferences: ^2.2.1
-
-dependency_overrides:
-  font_awesome_flutter:
-    path: font_awesome_flutter
+  flutter_svg: ^2.0.7
 
 dev_dependencies:
   flutter_test:
@@ -35,6 +32,8 @@ flutter:
   uses-material-design: true
   assets:
     - assets/translations/en-US.json
+    - assets/icon/disable.svg.vec
+    - assets/icon/enable.svg.vec
     - assets/translations/ru-RU.json
     - assets/music/alarm.mp3
 flutter_launcher_icons:
